@@ -4,42 +4,29 @@ class PrimeNumber {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();  // number of test cases
+        int low = sc.nextInt();  // low number low = 8;
+        int high = sc.nextInt(); // high number  high = 20;
 
-        for (int i = 0; i < a; i++) {
-            int b = sc.nextInt(); // input number
-
-            if (b <= 1) {
-                System.out.println("Not prime");
-                continue;
-            }
-
-            int count = 0;
-            for (int j = 2; j * j <= b; j++) {
-                if (b % j == 0) {
+        for (int n = low; n <= high; n++) {
+                int count = 0;
+            for (int  j = 2; j * j <= n; j++) {
+                if (n % j == 0) {
                     count++;
-                    break; // exit the loop if divisor found
+                    break;
                 }
             }
-
             if (count == 0) {
-                System.out.println("prime");
-            } else {
-                System.out.println("Not prime");
+                System.out.println(n); // print if no divisor found
             }
         }
     }
 }
 
 
-//  n = 5
+//j = 2; 2*2 = 4 <= 11 ✅ → 11 % 2 != 0
 //
-//  count = 0
+//j = 3; 3*3 = 9 <= 11 ✅ → 11 % 3 != 0
 //
-//  Loop: div = 2; 2*2 = 4 <= 5 ✅
+//j = 4; 4*4 = 16 > 11 ❌ → loop ends
 //
-//   5 % 2 != 0 → no divisor found
-//
-//   Next: div = 3; 3*3 = 9 > 5 ❌ → loop ends
-//
-//   count == 0 → print prime
+//count == 0 → print 11
